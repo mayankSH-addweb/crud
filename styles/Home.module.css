@@ -1,0 +1,35 @@
+.navUl{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.navUl li{
+  padding-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signupForm{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 70vw;
+  margin: 5px;
+  padding: 20px;
+}
+
+.signupForm > input{
+  padding: 5px;
+  margin: 5px;
+}
+.signupForm > input[type=submit]{
+  padding: 10px;
+  margin: 10px;
+}
+
+.main{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50,-50);
+}
