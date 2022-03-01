@@ -13,12 +13,11 @@ function signup() {
     function handleOnChange(e){
         const {name, value} = e.target;
         setStates({...states, [name]: value})
-        console.log(value)
     }
 
     function handleOnSubmit(e){
         e.preventDefault()
-        Axios.post('/signup', {firstName: states.firstName, lastName: states.lastName, password: states.password, email:states.password})
+        Axios.post('http://localhost:5000/signup', {firstName: states.firstName, lastName: states.lastName, password: states.password, email:states.password}).then((res)=>console.log(res.data))
     }
 
   return (
