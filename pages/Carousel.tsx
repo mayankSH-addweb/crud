@@ -42,7 +42,7 @@ function Carousel({ children }: { children: JSX.Element[] }) {
       <div className={styles.indicators}>
         <button
           onClick={() => updateIndex(activeIndex - 1)} //if clicked on prev than decrease activeIndex by 1
-          style={{ marginRight: "1094px" }}
+          style={{ marginRight: "92vw" }}
         >
           Previous
         </button>

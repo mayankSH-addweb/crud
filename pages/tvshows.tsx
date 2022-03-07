@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import Carousel, { CarouselItem } from "./Carousel.tsx";
+import Carousel, { CarouselItem } from "./Carousel";
 import styles from "../styles/Carousel.module.css";
 
 function tvshows() {
@@ -39,7 +39,7 @@ function tvshows() {
               <img
                 className={styles.imageData}
                 onClick={() => {
-                  setPopUp(true); // if clicked on image POP will come
+                  setPopUp(!popUp); // if clicked on image POP will come
                   setUrl(image.url); //if clicked on image url will be set for ReactPlayer
                 }}
                 alt="panga"
@@ -50,9 +50,15 @@ function tvshows() {
         })}
       </Carousel>
       {popUp ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <ReactPlayer url={url} />
-        </div>
+        <>
+          <div
+            onClick={() => setPopUp(!popUp)}
+            className={styles.overlay}
+          ></div>
+          <div className={styles.modalContent}>
+            <ReactPlayer url={url} />
+          </div>
+        </>
       ) : (
         <div></div>
       )}
