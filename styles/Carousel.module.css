@@ -1,3 +1,10 @@
+.imageData{
+    width: 400px;
+    height: 250px;
+    padding: 10px;
+    Cursor: pointer;
+}
+
 .carousel{
     overflow: hidden;
 }
@@ -12,7 +19,6 @@
     align-items: center;
     justify-content: center;
     height: 200px;
-    background-color: green;
     color: #fff;
 }
 
@@ -27,3 +33,4 @@
     background-color: green;
     color: #fff;
 }
+
