@@ -1,58 +1,69 @@
-.imageData{
-    width: 400px;
-    height: 250px;
-    padding: 10px;
-    Cursor: pointer;
+.imageData {
+  width: 400px;
+  height: 250px;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.carousel{
-    overflow: hidden;
+.carousel {
+  overflow: hidden;
 }
 
-.inner{
-    white-space: nowrap;
-    transition: transform 0.3s;
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
 }
+
 .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    /* right: 0;
-    bottom: 0; */
-    position: fixed;
-    background: rgba(49,49,49,0.8);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(49, 49, 49, 0.8);
+  z-index: 10;
 }
 .modalContent {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    /* padding: 14px 28px; */
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 12;
 }
 
-.carouselItem{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    color: #fff;
+.carouselItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #fff;
 }
 
-.indicators{
-    display: flex;
-    justify-content: center;
-}
-.indicators > button {
-    margin: 5px;
-}
-.indicators > button.active{
-    background-color: green;
-    color: #fff;
+.indicators {
+  display: flex;
+  justify-content: center;
 }
 
+.buttonClass {
+  width: 10px;
+  height: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  background: blue;
+}
+
+.buttonClassNormal {
+  width: 10px;
+  height: 15px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.indicators > button:hover {
+  cursor: pointer;
+}
