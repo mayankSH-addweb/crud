@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-import Carousel, { CarouselItem } from "./Carousel";
-import styles from "../styles/Carousel.module.css";
+import Popup from "../components/sliderPopup/Popup";
+import Carousel, { CarouselItem } from "../components/sliderPopup/Carousel";
+import Image from "../components/sliderPopup/Image";
 
 function tvshows() {
-  const [videosData, setVideosData] = useState([]);
-  const [popUp, setPopUp] = useState(false);
-  const [url, setUrl] = useState("");
+  const [videosData, setVideosData] = useState([]); //Contains array of data to use in carousel
+  const [popUpToggle, setPopUpToggle] = useState(false); //toggle for popup
+  const [url, setUrl] = useState(""); //videoUrl
+  const [autoplay, setautoplay] = useState(false); //videoUrl
   useEffect(() => {
     fetch("mock.json")
       .then((res) => res.json())
       .then((res) => setVideosData(res));
-  }, []);
+  }, []); //Fetched mock.json data from public
 
   interface videoData {
     title: string;
@@ -31,34 +32,27 @@ function tvshows() {
       <div style={{ display: "inline-flex" }}>
         <h1>TV Shows</h1>
       </div>
-      <Carousel>
+      <Carousel autoplay={autoplay}>
         {videosData?.map((image: videoData, index: number) => {
           return (
             <CarouselItem key={index}>
-              {/* <h3 style={{ display: "inline-flex" }}>{image.title}</h3> */}
-              <img
-                className={styles.imageData}
-                onClick={() => {
-                  setPopUp(!popUp); // if clicked on image POP will come
-                  setUrl(image.url); //if clicked on image url will be set for ReactPlayer
-                }}
-                alt="panga"
-                src={image.imageUrl}
+              <Image
+                setPopUpToggle={setPopUpToggle} // if clicked on image POP will come
+                setUrl={setUrl} //if clicked on image url will be set for ReactPlayer
+                popUpToggle={popUpToggle}
+                imageUrl={image.imageUrl}
+                url={image.url}
               />
             </CarouselItem>
           );
         })}
       </Carousel>
-      {popUp ? (
-        <>
-          <div
-            onClick={() => setPopUp(!popUp)}
-            className={styles.overlay}
-          ></div>
-          <div className={styles.modalContent}>
-            <ReactPlayer url={url} />
-          </div>
-        </>
+      <button onClick={() => setautoplay(!autoplay)}>
+        {" "}
+        Turn Autoplay {autoplay ? `Off` : `On`}
+      </button>
+      {popUpToggle ? (
+        <Popup setPopUp={setPopUpToggle} url={url} popUp={popUpToggle} />
       ) : (
         <div></div>
       )}
@@ -67,20 +61,3 @@ function tvshows() {
 }
 
 export default tvshows;
-
-// animation: spin 3s linear infinite;
-
-// .container{
-//   position: "relative",
-// }
-// .videosCarousel-before, .videosCarousel-after{
-//   position: absolute,
-//   width: 400px,
-//   height: 250px,
-//   padding: 10px,
-//   marginBottom: 20px,
-// }
-// .before {
-//   width: 200px;
-//   padding: 20px;
-// }
